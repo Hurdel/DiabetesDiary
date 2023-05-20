@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">DiabetesDiary</string>
+    <string name="title_rechner">Rechner</string>
+    <string name="title_tagebuch">Tagebuch</string>
+    <string name="title_einstellungen">Einstellungen</string>
+    <string name="title_blutzucker">Blutzucker</string>
+
+    <string name="berechnen">berechnen</string>
+    <string name="einstellungen">Einstellungen</string>
+    <string name="morgens">Morgens</string>
+    <string name="zwischenmahlzeit">Zwischenmahlzeit</string>
+    <string name="mittags">Mittags</string>
+    <string name="zwischenmahlzeit2">Zwischenmahlzeit</string>
+    <string name="abends">Abends</string>
+    <string name="sp_tmahlzeit">Spätmahlzeit</string>
+    <string name="werte_benehmen">Werte übenehmen</string>
+    <string name="tagebuch">Tagebuch</string>
+    <string name="title_activity_tagebuch">Tagebuch</string>
+    <string name="title_activitis">Aktivitäten</string>
+    <string name="ausgleich_defaultText">Der errechnete Wert liegt bei:</string>
+</resources>

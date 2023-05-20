@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="rich_black">#161f27</color>
+    <color name="cinnabar">#e94220</color>
+    <color name="fluorescent_cyan">#0fe6e6</color>
+    <color name="fluorescent_cyan_50">#800FE6E6</color>
+    <color name="fluorescent_cyan_75">#A60FE6E6</color>
+    <color name="celestial_blue">#2c96dd</color>
+    <color name="celestial_blue_statusbar">#1571AE</color>
+    <color name="kelly_green">#28bb11</color>
+</resources>
