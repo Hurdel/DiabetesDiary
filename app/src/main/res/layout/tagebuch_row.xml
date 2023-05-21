@@ -11,25 +11,24 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp">
 
-        <FrameLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        </FrameLayout>
+            android:layout_height="match_parent"
+            android:background="@color/celestial_blue" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:background="@drawable/framelayout_background" >
+            android:layout_height="match_parent"
+            android:background="@drawable/framelayout_background"
+            android:padding="12dp">
 
             <TextView
                 android:id="@+id/data_id_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@null"
                 android:textSize="40sp"
                 android:textStyle="bold"
-                android:background="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -39,10 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:background="@null"
                 android:text="Date 1"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                android:background="@null"
                 app:layout_constraintStart_toEndOf="@+id/data_id_txt"
                 app:layout_constraintTop_toTopOf="parent" />
 

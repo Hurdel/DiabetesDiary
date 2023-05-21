@@ -19,7 +19,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     CustomAdapter(Context context,
                   ArrayList data_id, ArrayList data_time, ArrayList data_value) {
         this.context = context;
-//        this.data_id = data_id;
+        this.data_id = data_id;
         this.data_time = data_time;
         this.data_value = data_value;
 
@@ -51,7 +51,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-//            data_id_txt = itemView.findViewById(R.id.data_id_txt);
+            data_id_txt = itemView.findViewById(R.id.data_id_txt);
             data_time_txt = itemView.findViewById(R.id.data_time_txt);
             data_value_txt = itemView.findViewById(R.id.data_value_txt);
         }
