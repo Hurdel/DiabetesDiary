@@ -13,5 +13,7 @@ public class ActivityActivity extends AppCompatActivity {
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(getString(R.string.title_activitis));
+
+        //TODO
     }
 }

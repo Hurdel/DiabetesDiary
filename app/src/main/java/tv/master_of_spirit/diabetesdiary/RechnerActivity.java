@@ -1,16 +1,12 @@
 package tv.master_of_spirit.diabetesdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.text.Layout;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -28,22 +24,31 @@ import java.util.Locale;
 
 public class RechnerActivity extends AppCompatActivity {
 
+//    allgemein
     Integer seletionid;
     Double resultIE;
     Double resultKH;
     Double ausgleich;
     Double blutzucker;
-    Spinner MultiplikatorSelection;
-    FloatingActionButton add_Button;
-    TextView ResultText;
     Double multiplikator;
+    TextView ResultText;
+    MyDatabaseHelper myDB = new MyDatabaseHelper(RechnerActivity.this);
+
+//    Rechner
+    Spinner MultiplikatorSelection;
+    FloatingActionButton save_Button;
     ArrayList<Double> multiplikatorliste = new ArrayList<>();
     Button calcutalteButton;
     String selectedmultiplikator;
     List<String> defaulthintlist = new ArrayList<>();
     List<TextInputLayout> ikh = new ArrayList<>();
     List<TextInputLayout> igewicht = new ArrayList<>();
-    MyDatabaseHelper myDB = new MyDatabaseHelper(RechnerActivity.this);
+
+//    Ausgleichswert
+    TextView errechnet;
+    TextInputLayout input_Korrekturwert;
+    TextInputLayout input_Blutzucker;
+    FloatingActionButton checkButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +60,9 @@ public class RechnerActivity extends AppCompatActivity {
 
         CreateCalculator();
 
-        add_Button = findViewById(R.id.save_button);
+        save_Button = findViewById(R.id.save_button);
         ResultText = findViewById(R.id.restext);
-        add_Button.setOnClickListener(new View.OnClickListener() {
+        save_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!(ResultText.getText().length() == 0)) {
@@ -87,7 +92,6 @@ public class RechnerActivity extends AppCompatActivity {
         super.onResume();
         createmultiplikatorliste();
         reloadMultiplicatorSelectorList();
-        setResultText();
     }
 
     private void CreateCalculator() {
@@ -127,29 +131,9 @@ public class RechnerActivity extends AppCompatActivity {
     }
 
     private void setResultText() {
-        if (getIntent().hasExtra("korrektur") &&
-                getIntent().hasExtra("resultIE") &&
-                getIntent().hasExtra("resultKH") &&
-                getIntent().hasExtra("selectedmultiplikator") &&
-                getIntent().hasExtra("seletionid")) {
-            if (getIntent().hasExtra("blutzucker")) {
-                blutzucker = getIntent().getDoubleExtra("blutzucker", 0.0);
-                getIntent().removeExtra("blutzucker");
-            }
-            ausgleich = getIntent().getDoubleExtra("korrektur", 0.0);
-            resultIE = getIntent().getDoubleExtra("resultIE", 0.0);
-            resultKH = getIntent().getDoubleExtra("resultKH", 0.0);
-            selectedmultiplikator = getIntent().getStringExtra("selectedmultiplikator");
-            seletionid = getIntent().getIntExtra("seletionid", 0);
-            getIntent().removeExtra("korrektur");
-            getIntent().removeExtra("resultIE");
-            getIntent().removeExtra("resultKH");
-            getIntent().removeExtra("selectedmultiplikator");
-            getIntent().removeExtra("seletionid");
-            MultiplikatorSelection.setSelection(seletionid);
-            String resulttext = resultKH + " KH -> " + (Math.round((resultIE + ausgleich) * 10) / 10.0) + " IE";
-            ResultText.setText(resulttext);
-        }
+        MultiplikatorSelection.setSelection(seletionid);
+        String resulttext = resultKH + " KH -> " + (Math.round((resultIE + ausgleich) * 10) / 10.0) + " IE";
+        ResultText.setText(resulttext);
     }
 
     private void calculate() {
@@ -173,12 +157,7 @@ public class RechnerActivity extends AppCompatActivity {
         resultKH = (Math.round(resultKH * 100) / 10.0);
         resultIE = (Math.round(resultIE * 10) / 10.0);
 
-        Intent ausgleichintent = new Intent(RechnerActivity.this, AusgleichwertActivity.class);
-        ausgleichintent.putExtra("resultKH", resultKH);
-        ausgleichintent.putExtra("resultIE", resultIE);
-        ausgleichintent.putExtra("selectedmultiplikator", selectedmultiplikator);
-        ausgleichintent.putExtra("seletionid", seletionid);
-        startActivity(ausgleichintent);
+        createAusgleichswert();
     }
 
     private void reloadMultiplicatorSelectorList() {
@@ -225,5 +204,42 @@ public class RechnerActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+//    Ausgleichswert
+
+    private void createAusgleichswert() {
+        View include_Rechner = findViewById(R.id.include_rechner);
+        View include_Ausgleich = findViewById(R.id.include_ausgleich);
+        include_Rechner.setVisibility(View.GONE);
+        include_Ausgleich.setVisibility(View.VISIBLE);
+
+        errechnet = findViewById(R.id.DisplayText);
+        input_Korrekturwert = findViewById(R.id.input_Korrekturwert);
+        input_Blutzucker = findViewById(R.id.input_Blutzucker);
+        checkButton = findViewById(R.id.checkButton);
+
+        String displaytext = resultIE + " IE";
+        errechnet.setText(displaytext);
+
+        checkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (input_Korrekturwert.getEditText().getText().length() > 0) {
+                    ausgleich = Double.parseDouble(input_Korrekturwert.getEditText().getText().toString());
+
+                    if (input_Blutzucker.getEditText().getText().length() > 0) {
+                        blutzucker = Double.parseDouble(input_Blutzucker.getEditText().getText().toString());
+                    }
+                    include_Rechner.setVisibility(View.VISIBLE);
+                    include_Ausgleich.setVisibility(View.GONE);
+
+                    setResultText();
+                }
+                else {
+                    Toast.makeText(RechnerActivity.this, "Gib die Ausgleichswert ein!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }
