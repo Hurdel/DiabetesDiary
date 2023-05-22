@@ -50,6 +50,7 @@ public class ActivityActivity extends AppCompatActivity {
 
         String date = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault()).format(new Date(System.currentTimeMillis()));
         input_time.getEditText().setText(date);
+        input_activity.getEditText().setText(null);
 
         save_activity.setOnClickListener(new View.OnClickListener() {
             @Override

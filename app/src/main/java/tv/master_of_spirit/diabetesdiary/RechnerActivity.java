@@ -217,6 +217,9 @@ public class RechnerActivity extends AppCompatActivity {
         input_Blutzucker = findViewById(R.id.input_Blutzucker);
         checkButton = findViewById(R.id.checkButton);
 
+        input_Korrekturwert.getEditText().setText(null);
+        input_Blutzucker.getEditText().setText(null);
+
         String displaytext = resultIE + " IE";
         errechnet.setText(displaytext);
 
