@@ -2,10 +2,8 @@ package tv.master_of_spirit.diabetesdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,7 +22,7 @@ import java.util.Locale;
 
 public class RechnerActivity extends AppCompatActivity {
 
-//    allgemein
+    //    allgemein
     Integer seletionid;
     Double resultIE;
     Double resultKH;
@@ -34,7 +32,7 @@ public class RechnerActivity extends AppCompatActivity {
     TextView ResultText;
     MyDatabaseHelper myDB = new MyDatabaseHelper(RechnerActivity.this);
 
-//    Rechner
+    //    Rechner
     Spinner MultiplikatorSelection;
     FloatingActionButton save_Button;
     ArrayList<Double> multiplikatorliste = new ArrayList<>();
@@ -44,7 +42,7 @@ public class RechnerActivity extends AppCompatActivity {
     List<TextInputLayout> ikh = new ArrayList<>();
     List<TextInputLayout> igewicht = new ArrayList<>();
 
-//    Ausgleichswert
+    //    Ausgleichswert
     TextView errechnet;
     TextInputLayout input_Korrekturwert;
     TextInputLayout input_Blutzucker;
@@ -206,7 +204,7 @@ public class RechnerActivity extends AppCompatActivity {
         }
     }
 
-//    Ausgleichswert
+    //    Ausgleichswert
 
     private void createAusgleichswert() {
         View include_Rechner = findViewById(R.id.include_rechner);

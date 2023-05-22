@@ -15,7 +15,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Insulinrechner.db";
     private static final int DATABASE_VERSION = 1;
 
-//    namespace messungen
+    //    namespace messungen
     private static final String TABLE_NAME_MESSUNGEN = "tagebuch";
     private static final String COLUMN_ID = "_id";
     private static final String COLUMN_TIMESTAMP = "timestamp";
@@ -32,7 +32,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_ACTIVITYTIME = "timestamp";
     private static final String COLUMN_ACTIVITYNAME = "activity";
 
-//    namespace rechnung
+    //    namespace rechnung
     private static final String TABLE_NAME_RECHNUNG = "rechnungendb";
     private static final String COLUMN_RECHNUNGID = "_id";
     private static final String COLUMN_RECHUNGTIME = "timestamp";
@@ -57,7 +57,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
                         COLUMN_SETTINGVALUE + " DOUBLE);";
         db.execSQL(querysettings);
         String queryactivity =
-                "CREATE TABLE " + TABLE_NAME_MESSUNGEN +
+                "CREATE TABLE " + TABLE_NAME_ACTIVITY +
                         " (" + COLUMN_ACTIVITYID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         COLUMN_ACTIVITYTIME + " TEXT, " +
                         COLUMN_ACTIVITYNAME + " TEXT);";
