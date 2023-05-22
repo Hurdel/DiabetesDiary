@@ -17,10 +17,6 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".AusgleichwertActivity"
-            android:exported="false"
-            android:parentActivityName=".RechnerActivity" />
-        <activity
             android:name=".RechnerActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
