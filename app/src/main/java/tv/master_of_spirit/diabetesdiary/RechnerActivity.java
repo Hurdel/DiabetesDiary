@@ -41,6 +41,7 @@ public class RechnerActivity extends AppCompatActivity {
     List<String> defaulthintlist = new ArrayList<>();
     List<TextInputLayout> ikh = new ArrayList<>();
     List<TextInputLayout> igewicht = new ArrayList<>();
+    ArrayList<Double>
 
     //    Ausgleichswert
     TextView errechnet;

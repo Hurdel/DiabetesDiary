@@ -24,7 +24,7 @@ public class ViewRechnungActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_rechnung);
         setSupportActionBar(findViewById(R.id.toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setTitle(getString(R.string.title_rechner));
+        getSupportActionBar().setTitle("N/A");
 
         recycleViewRechnung = findViewById(R.id.recycleViewRechnung);
 
@@ -40,6 +40,7 @@ public class ViewRechnungActivity extends AppCompatActivity {
         if (getIntent().hasExtra("timestamp")) {
             data_time = getIntent().getStringExtra("timestamp");
             getIntent().removeExtra("timestamp");
+            getSupportActionBar().setTitle(String.valueOf(data_time));
         }
     }
 

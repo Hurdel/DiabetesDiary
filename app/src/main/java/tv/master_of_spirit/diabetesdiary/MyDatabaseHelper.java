@@ -13,7 +13,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
     private static final String DATABASE_NAME = "Insulinrechner.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 4;
 
     //    namespace messungen
     private static final String TABLE_NAME_MESSUNGEN = "tagebuch";
@@ -65,9 +65,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         String queryrechung =
                 "CREATE TABLE " + TABLE_NAME_RECHNUNG +
                         " (" + COLUMN_RECHNUNGID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        COLUMN_RECHUNGTIME + "STRING, " +
-                        COLUMN_RECHUNGPRO100 + " DOUBLE, " +
-                        COLUMN_RECHNUNGGEWICHT + " DOUBLE);";
+                        COLUMN_RECHUNGTIME + " STRING, " +
+                        COLUMN_RECHUNGPRO100 + " TEXT, " +
+                        COLUMN_RECHNUNGGEWICHT + " TEXT);";
         db.execSQL(queryrechung);
     }
 
@@ -172,7 +172,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     Cursor getRechnung(String time) {
-        String query = "SELECT * FROM " + TABLE_NAME_RECHNUNG + " WHERE " + COLUMN_RECHUNGTIME + " = " + time;
+        String query = "SELECT * FROM " + TABLE_NAME_RECHNUNG + " WHERE " + COLUMN_RECHUNGTIME + " = '" + time + "'";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
