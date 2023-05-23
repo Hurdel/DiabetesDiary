@@ -20,7 +20,7 @@ public class TagebuchActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MyDatabaseHelper myDB;
     ArrayList<String> data_id, data_time, data_value;
-    CustomAdapter customAdapter;
+    CustomAdapter_clickable customAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class TagebuchActivity extends AppCompatActivity {
 
         storeDataInArrays();
 
-        customAdapter = new CustomAdapter(TagebuchActivity.this, data_id, data_time, data_value);
+        customAdapter = new CustomAdapter_clickable(TagebuchActivity.this, data_id, data_time, data_value);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(TagebuchActivity.this));
 
