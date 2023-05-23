@@ -157,7 +157,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
-    void addRechnung(String time, Double pro100, Double gewicht) {
+    void addRechnung(String time, String pro100, String gewicht) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 

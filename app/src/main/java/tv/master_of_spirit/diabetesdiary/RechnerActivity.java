@@ -41,7 +41,7 @@ public class RechnerActivity extends AppCompatActivity {
     List<String> defaulthintlist = new ArrayList<>();
     List<TextInputLayout> ikh = new ArrayList<>();
     List<TextInputLayout> igewicht = new ArrayList<>();
-    ArrayList<Double>
+    ArrayList<String> data_pro100, data_gewicht;
 
     //    Ausgleichswert
     TextView errechnet;
@@ -58,6 +58,9 @@ public class RechnerActivity extends AppCompatActivity {
         getSupportActionBar().setTitle(getString(R.string.title_rechner));
 
         CreateCalculator();
+
+        data_pro100 = new ArrayList<>();
+        data_gewicht = new ArrayList<>();
 
         save_Button = findViewById(R.id.save_button);
         ResultText = findViewById(R.id.restext);
@@ -78,6 +81,9 @@ public class RechnerActivity extends AppCompatActivity {
                             "Esssen: " + resultKH + " KH -> " + resultIE + " IE\n" +
                             "Multiplikator: " + selectedmultiplikator;
                     myDB.addMessung(date, value);
+                    for (int i = 0; i < data_pro100.size(); i++) {
+                        myDB.addRechnung(date, data_pro100.get(i), data_gewicht.get(i));
+                    }
                 }
                 else {
                     Toast.makeText(RechnerActivity.this, "Kein Wert zum speichern errechnent!", Toast.LENGTH_SHORT).show();
@@ -145,6 +151,9 @@ public class RechnerActivity extends AppCompatActivity {
         for (int i = 0; i < ikh.size(); i++) {
             if (ikh.get(i).getEditText().getText().toString().length() > 0
                     && igewicht.get(i).getEditText().getText().toString().length() > 0) {
+                data_pro100.add(ikh.get(i).getEditText().getText().toString());
+                data_gewicht.add(igewicht.get(i).getEditText().getText().toString());
+
                 Double kh = Double.parseDouble(ikh.get(i).getEditText().getText().toString());
                 Double gewicht = Double.parseDouble(igewicht.get(i).getEditText().getText().toString());
                 double k = (kh * gewicht) / 100;

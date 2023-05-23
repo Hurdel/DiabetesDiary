@@ -23,7 +23,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
 
@@ -48,7 +48,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
 
@@ -73,7 +73,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -97,7 +97,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -121,7 +121,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -145,7 +145,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -168,7 +168,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -191,7 +191,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -214,7 +214,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -237,7 +237,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kohlenhydrate [g/100g]"
+            android:hint="@string/kohlenhydrate_pro_100"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -261,7 +261,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -285,7 +285,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -309,7 +309,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -333,7 +333,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -357,7 +357,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -381,7 +381,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -403,7 +403,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -425,7 +425,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -447,7 +447,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -469,7 +469,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gewicht [g]"
+            android:hint="@string/gewicht"
             android:inputType="number|numberDecimal"
             android:textColor="@color/white" />
     </com.google.android.material.textfield.TextInputLayout>

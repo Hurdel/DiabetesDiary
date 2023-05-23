@@ -18,4 +18,6 @@
     <string name="title_activity_tagebuch">Tagebuch</string>
     <string name="title_activitis">Aktivitäten</string>
     <string name="ausgleich_defaultText">Der errechnete Wert liegt bei:</string>
+    <string name="kohlenhydrate_pro_100">Kohlenhydrate [g/100g]</string>
+    <string name="gewicht">Gewicht [g]</string>
 </resources>
