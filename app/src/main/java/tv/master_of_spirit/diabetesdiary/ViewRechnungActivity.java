@@ -59,8 +59,8 @@ public class ViewRechnungActivity extends AppCompatActivity {
         }
         else {
             while (cursor.moveToNext()) {
-                data_pro100.add(cursor.getString(1));
-                data_gewicht.add(cursor.getString(2));
+                data_pro100.add(cursor.getString(2));
+                data_gewicht.add(cursor.getString(3));
             }
         }
     }

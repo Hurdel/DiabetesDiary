@@ -51,8 +51,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/kohlenhydrate_pro_100"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
     </FrameLayout>
 
     <FrameLayout
@@ -68,8 +69,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/gewicht"
-            android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
     </FrameLayout>
 
 
