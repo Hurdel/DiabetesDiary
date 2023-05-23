@@ -1,22 +1,29 @@
 package tv.master_of_spirit.diabetesdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
 public class ActivityActivity extends AppCompatActivity {
 
-    View activityView, activityview_add;
-    FloatingActionButton add_Button, save_activity;
-    TextInputLayout input_time, input_activity;
+    RecyclerView activityView;
+    FloatingActionButton add_Button;
+    ArrayList<String> data_id, data_time, data_value;
+    CustomAdapter customAdapter;
 
     MyDatabaseHelper myDB = new MyDatabaseHelper(ActivityActivity.this);
 
@@ -30,7 +37,13 @@ public class ActivityActivity extends AppCompatActivity {
 
         add_Button = findViewById(R.id.addactivity_button);
         activityView = findViewById(R.id.activityView);
-        activityview_add = findViewById(R.id.add_activityView);
+
+        data_id = new ArrayList<>();
+        data_time = new ArrayList<>();
+        data_value = new ArrayList<>();
+
+        loadAdapter();
+
         add_Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,28 +53,31 @@ public class ActivityActivity extends AppCompatActivity {
     }
 
     private void addActivity() {
-        add_Button.setVisibility(View.INVISIBLE);
-        activityView.setVisibility(View.INVISIBLE);
-        activityview_add.setVisibility(View.VISIBLE);
+        Intent intent = new Intent(ActivityActivity.this, addActivityActivity.class);
+        startActivity(intent);
+    }
 
-        input_time = findViewById(R.id.input_activitytime);
-        input_activity = findViewById(R.id.input_activity);
-        save_activity = findViewById(R.id.saveActivity);
+    private void loadAdapter() {
+        storeDataInArrays();
 
-        String date = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault()).format(new Date(System.currentTimeMillis()));
-        input_time.getEditText().setText(date);
-        input_activity.getEditText().setText(null);
+        activityView.removeAllViewsInLayout();
 
-        save_activity.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (input_activity.getEditText().getText().length() > 0 && input_time.getEditText().getText().length() > 0) {
-                    myDB.addActivity(input_time.getEditText().getText().toString(), input_activity.getEditText().getText().toString());
-                    activityview_add.setVisibility(View.INVISIBLE);
-                    add_Button.setVisibility(View.VISIBLE);
-                    activityView.setVisibility(View.VISIBLE);
-                }
+        customAdapter = new CustomAdapter(ActivityActivity.this, data_id, data_time, data_value);
+        activityView.setAdapter(customAdapter);
+        activityView.setLayoutManager(new LinearLayoutManager(ActivityActivity.this));
+    }
+
+    private void storeDataInArrays() {
+        Cursor cursor = myDB.getActivitys();
+        if (cursor.getCount() == 0) {
+            Toast.makeText(this, "No Data!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            while (cursor.moveToNext()) {
+                data_id.add(cursor.getString(0));
+                data_time.add(cursor.getString(1));
+                data_value.add(cursor.getString(2));
             }
-        });
+        }
     }
 }
