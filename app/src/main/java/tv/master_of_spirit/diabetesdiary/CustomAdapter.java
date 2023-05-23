@@ -22,12 +22,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         this.data_id = data_id;
         this.data_time = data_time;
         this.data_value = data_value;
-
     }
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CustomAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater infalter = LayoutInflater.from(context);
         View view = infalter.inflate(R.layout.tagebuch_row, parent, false);
         return new MyViewHolder(view);
