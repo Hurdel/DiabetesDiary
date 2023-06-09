@@ -1,15 +1,10 @@
 package tv.master_of_spirit.diabetesdiary;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -41,15 +36,6 @@ public class TagebuchActivity extends AppCompatActivity {
         customAdapter = new CustomAdapter_clickable(TagebuchActivity.this, data_id, data_time, data_value);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(TagebuchActivity.this));
-
-        recyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent viewintent = new Intent(TagebuchActivity.this, ViewRechnungActivity.class);
-//                viewintent.putExtra("timestamp", recyclerView.getView)
-                startActivity(viewintent);
-            }
-        });
     }
 
     private void storeDataInArrays() {
