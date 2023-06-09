@@ -77,8 +77,8 @@ public class RechnerActivity extends AppCompatActivity {
                         blutzuckertext = blutzucker + " mg/dl";
                     }
                     String value = "Blutzucker: " + blutzuckertext + "\n" +
-                            "Ausgleichswert: " + ausgleich + " IE\n" +
                             "Esssen: " + resultKH + " KH -> " + resultIE + " IE\n" +
+                            "Ausgleichswert: " + ausgleich + " IE\n" +
                             "Multiplikator: " + selectedmultiplikator;
                     myDB.addMessung(date, value);
                     for (int i = 0; i < data_pro100.size(); i++) {

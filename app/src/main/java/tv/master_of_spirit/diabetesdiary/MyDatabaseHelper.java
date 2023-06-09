@@ -90,9 +90,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         if (result == -1) {
             Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
         }
-//        else {
-//            Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
-//        }
     }
 
     Cursor readAllData() {
