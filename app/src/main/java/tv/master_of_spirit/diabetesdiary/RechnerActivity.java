@@ -77,7 +77,7 @@ public class RechnerActivity extends AppCompatActivity {
                         blutzuckertext = blutzucker + " mg/dl";
                     }
                     String value = "Blutzucker: " + blutzuckertext + "\n" +
-                            "Esssen: " + resultKH + " KH -> " + resultIE + " IE\n" +
+                            "Esssen: " + resultKH + " KE -> " + resultIE + " IE\n" +
                             "Ausgleichswert: " + ausgleich + " IE\n" +
                             "Multiplikator: " + selectedmultiplikator;
                     myDB.addMessung(date, value);
@@ -156,13 +156,13 @@ public class RechnerActivity extends AppCompatActivity {
 
                 Double kh = Double.parseDouble(ikh.get(i).getEditText().getText().toString());
                 Double gewicht = Double.parseDouble(igewicht.get(i).getEditText().getText().toString());
-                double k = (kh * gewicht) / 100;
+                double k = (kh * gewicht) / 1000;
                 resultKH += k;
                 double r = (kh * gewicht) / 1000 * multiplikator;
                 resultIE += r;
             }
         }
-        resultKH = (Math.round(resultKH * 100) / 10.0);
+        resultKH = (Math.round(resultKH * 10) / 10.0);
         resultIE = (Math.round(resultIE * 10) / 10.0);
 
         createAusgleichswert();
