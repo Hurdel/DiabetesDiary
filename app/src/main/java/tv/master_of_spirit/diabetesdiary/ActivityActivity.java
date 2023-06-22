@@ -70,7 +70,7 @@ public class ActivityActivity extends AppCompatActivity {
     private void storeDataInArrays() {
         Cursor cursor = myDB.getActivitys();
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Activity!", Toast.LENGTH_SHORT).show();
         }
         else {
             while (cursor.moveToNext()) {

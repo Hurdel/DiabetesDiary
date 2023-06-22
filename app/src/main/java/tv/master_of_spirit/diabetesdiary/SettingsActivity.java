@@ -81,7 +81,7 @@ public class SettingsActivity extends AppCompatActivity {
         multiplikatorliste.add(1.3);
         Cursor cursor = myDB.getSettings();
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Settings!", Toast.LENGTH_SHORT).show();
         }
         else {
             while (cursor.moveToNext()) {

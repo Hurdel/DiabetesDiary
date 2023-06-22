@@ -2,9 +2,11 @@ package tv.master_of_spirit.diabetesdiary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -80,7 +82,10 @@ public class RechnerActivity extends AppCompatActivity {
                             "Esssen: " + resultKE + " KE -> " + resultIE + " IE\n" +
                             "Ausgleichswert: " + ausgleich + " IE\n" +
                             "Multiplikator: " + selectedmultiplikator;
-                    myDB.addMessung(date, value);
+                    long res = myDB.addMessung(date, value);
+                    if (res != -1) {
+                        Toast.makeText(RechnerActivity.this, "data saved", Toast.LENGTH_SHORT).show();
+                    }
                     for (int i = 0; i < data_pro100.size(); i++) {
                         myDB.addRechnung(date, data_pro100.get(i), data_gewicht.get(i));
                     }
@@ -203,7 +208,7 @@ public class RechnerActivity extends AppCompatActivity {
         multiplikatorliste.add(1.3);
         Cursor cursor = myDB.getSettings();
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Settings!", Toast.LENGTH_SHORT).show();
         }
         else {
             while (cursor.moveToNext()) {
@@ -230,6 +235,12 @@ public class RechnerActivity extends AppCompatActivity {
         input_Korrekturwert.getEditText().setText(null);
         input_Blutzucker.getEditText().setText(null);
 
+        View focus = getCurrentFocus();
+        if (focus != null) {
+            focus.clearFocus();
+        }
+        input_Korrekturwert.requestFocus();
+
         String displaytext = resultIE + " IE";
         errechnet.setText(displaytext);
 
@@ -244,6 +255,13 @@ public class RechnerActivity extends AppCompatActivity {
                     }
                     include_Rechner.setVisibility(View.VISIBLE);
                     include_Ausgleich.setVisibility(View.GONE);
+
+                    View focus = getCurrentFocus();
+                    if (focus != null) {
+                        focus.clearFocus();
+                    }
+                    InputMethodManager imm = (InputMethodManager) getSystemService(RechnerActivity.this.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                     setResultText();
                 }

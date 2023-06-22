@@ -41,6 +41,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
@@ -80,7 +81,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void addMessung(String timestamp, String value) {
+    long addMessung(String timestamp, String value) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -88,8 +89,9 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_VALUE, value);
         long result = db.insert(TABLE_NAME_MESSUNGEN, null, cv);
         if (result == -1) {
-            Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "save failed", Toast.LENGTH_SHORT).show();
         }
+        return result;
     }
 
     Cursor readAllData() {
@@ -116,6 +118,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
             if (result == -1) {
                 Toast.makeText(context, "Failed to save!", Toast.LENGTH_SHORT).show();
             }
+            else {
+                Toast.makeText(context, String.format("%s updated", settingname), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Toast.makeText(context, String.format("%s saved", settingname), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -139,7 +147,10 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(TABLE_NAME_ACTIVITY, null, cv);
         if (result == -1) {
-            Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "save activity failed", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(context, "avtivity saved", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -164,7 +175,7 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
 
         long result = db.insert(TABLE_NAME_RECHNUNG, null, cv);
         if (result == -1) {
-            Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "save failed", Toast.LENGTH_SHORT).show();
         }
     }
 
