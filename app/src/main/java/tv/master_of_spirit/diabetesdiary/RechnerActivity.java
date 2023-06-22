@@ -25,7 +25,7 @@ public class RechnerActivity extends AppCompatActivity {
     //    allgemein
     Integer seletionid;
     Double resultIE;
-    Double resultKH;
+    Double resultKE;
     Double ausgleich;
     Double blutzucker;
     Double multiplikator;
@@ -77,7 +77,7 @@ public class RechnerActivity extends AppCompatActivity {
                         blutzuckertext = blutzucker + " mg/dl";
                     }
                     String value = "Blutzucker: " + blutzuckertext + "\n" +
-                            "Esssen: " + resultKH + " KE -> " + resultIE + " IE\n" +
+                            "Esssen: " + resultKE + " KE -> " + resultIE + " IE\n" +
                             "Ausgleichswert: " + ausgleich + " IE\n" +
                             "Multiplikator: " + selectedmultiplikator;
                     myDB.addMessung(date, value);
@@ -137,13 +137,13 @@ public class RechnerActivity extends AppCompatActivity {
 
     private void setResultText() {
         MultiplikatorSelection.setSelection(seletionid);
-        String resulttext = resultKH + " KH -> " + (Math.round((resultIE + ausgleich) * 10) / 10.0) + " IE";
+        String resulttext = resultKE + " KE -> " + (Math.round((resultIE + ausgleich) * 10) / 10.0) + " IE";
         ResultText.setText(resulttext);
     }
 
     private void calculate() {
         resultIE = 0.0;
-        resultKH = 0.0;
+        resultKE = 0.0;
         seletionid = MultiplikatorSelection.getSelectedItemPosition();
         selectedmultiplikator = MultiplikatorSelection.getSelectedItem().toString();
         multiplikator = multiplikatorliste.get(seletionid);
@@ -157,12 +157,12 @@ public class RechnerActivity extends AppCompatActivity {
                 Double kh = Double.parseDouble(ikh.get(i).getEditText().getText().toString());
                 Double gewicht = Double.parseDouble(igewicht.get(i).getEditText().getText().toString());
                 double k = (kh * gewicht) / 1000;
-                resultKH += k;
+                resultKE += k;
                 double r = (kh * gewicht) / 1000 * multiplikator;
                 resultIE += r;
             }
         }
-        resultKH = (Math.round(resultKH * 10) / 10.0);
+        resultKE = (Math.round(resultKE * 10) / 10.0);
         resultIE = (Math.round(resultIE * 10) / 10.0);
 
         createAusgleichswert();
