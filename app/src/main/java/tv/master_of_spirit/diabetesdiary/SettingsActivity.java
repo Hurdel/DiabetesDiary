@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -48,6 +49,8 @@ public class SettingsActivity extends AppCompatActivity {
         multsetbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(SettingsActivity.this.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 setSettings();
             }
         });
@@ -81,7 +84,7 @@ public class SettingsActivity extends AppCompatActivity {
         multiplikatorliste.add(1.3);
         Cursor cursor = myDB.getSettings();
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Settings!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "No Settings!", Toast.LENGTH_SHORT).show();
         }
         else {
             while (cursor.moveToNext()) {
