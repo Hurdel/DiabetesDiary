@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -54,10 +55,12 @@ public class ViewRechnungActivity extends AppCompatActivity {
 
     private void storeDataInArrays() {
         Cursor cursor = myDB.getRechnung(data_time);
+        TextView natext = findViewById(R.id.natext);
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data!", Toast.LENGTH_SHORT).show();
+            natext.setText("N/A");
         }
         else {
+            natext.setText("");
             while (cursor.moveToNext()) {
                 data_pro100.add(cursor.getString(2));
                 data_gewicht.add(cursor.getString(3));

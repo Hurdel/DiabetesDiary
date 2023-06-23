@@ -37,6 +37,9 @@ public class addActivityActivity extends AppCompatActivity {
         String date = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss", Locale.getDefault()).format(new Date(System.currentTimeMillis()));
         input_time.getEditText().setText(date);
 
+        input_activity.requestFocus();
+
+
         save_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

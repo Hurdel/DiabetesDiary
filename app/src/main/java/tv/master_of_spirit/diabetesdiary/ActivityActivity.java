@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -69,10 +70,12 @@ public class ActivityActivity extends AppCompatActivity {
 
     private void storeDataInArrays() {
         Cursor cursor = myDB.getActivitys();
+        TextView natext = findViewById(R.id.natext);
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Activity!", Toast.LENGTH_SHORT).show();
+            natext.setText("N/A");
         }
         else {
+            natext.setText("");
             while (cursor.moveToNext()) {
                 data_id.add(cursor.getString(0));
                 data_time.add(cursor.getString(1));

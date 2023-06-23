@@ -2,6 +2,7 @@ package tv.master_of_spirit.diabetesdiary;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,10 +41,12 @@ public class TagebuchActivity extends AppCompatActivity {
 
     private void storeDataInArrays() {
         Cursor cursor = myDB.readAllData();
+        TextView natext = findViewById(R.id.natext);
         if (cursor.getCount() == 0) {
-            Toast.makeText(this, "No Data!", Toast.LENGTH_SHORT).show();
+            natext.setText("N/A");
         }
         else {
+            natext.setText("");
             while (cursor.moveToNext()) {
                 data_id.add(cursor.getString(0));
                 data_time.add(cursor.getString(1));

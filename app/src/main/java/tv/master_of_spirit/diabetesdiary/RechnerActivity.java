@@ -238,8 +238,9 @@ public class RechnerActivity extends AppCompatActivity {
         View focus = getCurrentFocus();
         if (focus != null) {
             focus.clearFocus();
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(focus.getWindowToken(), 0);
         }
-        input_Korrekturwert.requestFocus();
 
         String displaytext = resultIE + " IE";
         errechnet.setText(displaytext);
@@ -260,7 +261,7 @@ public class RechnerActivity extends AppCompatActivity {
                     if (focus != null) {
                         focus.clearFocus();
                     }
-                    InputMethodManager imm = (InputMethodManager) getSystemService(RechnerActivity.this.INPUT_METHOD_SERVICE);
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
                     setResultText();
