@@ -79,7 +79,7 @@ public class RechnerActivity extends AppCompatActivity {
                         blutzuckertext = blutzucker + " mg/dl";
                     }
                     String value = "Blutzucker: " + blutzuckertext + "\n" +
-                            "Esssen: " + resultKE + " KE -> " + resultIE + " IE\n" +
+                            "Esssen: " + resultKE + " KH -> " + resultIE + " IE\n" +
                             "Ausgleichswert: " + ausgleich + " IE\n" +
                             "Multiplikator: " + selectedmultiplikator;
                     long res = myDB.addMessung(date, value);
@@ -142,7 +142,7 @@ public class RechnerActivity extends AppCompatActivity {
 
     private void setResultText() {
         MultiplikatorSelection.setSelection(seletionid);
-        String resulttext = resultKE + " KE -> " + (Math.round((resultIE + ausgleich) * 10) / 10.0) + " IE";
+        String resulttext = resultKE + " KH -> " + (Math.round((resultIE + ausgleich) * 10) / 10.0) + " IE";
         ResultText.setText(resulttext);
     }
 
@@ -161,7 +161,7 @@ public class RechnerActivity extends AppCompatActivity {
 
                 Double kh = Double.parseDouble(ikh.get(i).getEditText().getText().toString());
                 Double gewicht = Double.parseDouble(igewicht.get(i).getEditText().getText().toString());
-                double k = (kh * gewicht) / 1000;
+                double k = (kh * gewicht) / 100;
                 resultKE += k;
                 double r = (kh * gewicht) / 1000 * multiplikator;
                 resultIE += r;
